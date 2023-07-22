@@ -1,4 +1,5 @@
 ﻿using Business.Absract;
+using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -17,6 +18,12 @@ namespace Business.Concrete
         public ProductManager(IProductDal productDal)
         {
             _productDal = productDal;
+        }
+
+        public IResult Add(Product product)
+        {
+            _productDal.Add(product);
+            return new SuccessResult(message:"asd");
         }
 
         public IDataResult<List<Product>> GetAll()

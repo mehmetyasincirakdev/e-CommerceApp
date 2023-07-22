@@ -12,7 +12,7 @@ namespace Core.Utilities.Results
         {
 
         }
-        public SuccessResult():base(true)
+        public SuccessResult(object v) :base(true)
         {
             
         }

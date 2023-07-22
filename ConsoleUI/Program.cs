@@ -8,15 +8,15 @@ CategoryTest();
 static void ProductTest()
 {
     ProductManager productManager = new ProductManager(new EfProductDal());
-    foreach (var item in productManager.GetProductDetails())
+    var result = productManager.GetProductDetails();
+    foreach (var item in result.Data)
         Console.WriteLine(item.ProductName + " ----- " + item.CategoryName + " ----- " + item.UnitPrice + " ----- " + item.UnitsInStock);
 }
 
 static void CategoryTest()
 {
     CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
-    var categories = categoryManager.GetById(3);
-    Console.WriteLine(categories.CategoryName);
-    foreach (var category in categoryManager.GetAll())
+    var result = categoryManager.GetAll();
+    foreach (var category in result.Data)
         Console.WriteLine(category.CategoryId + "- " + category.CategoryName);
 }
