@@ -1,14 +1,11 @@
 ﻿using Business.Absract;
-using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Validation;
+using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
@@ -20,10 +17,12 @@ namespace Business.Concrete
             _productDal = productDal;
         }
 
+        [ValidationAspect(typeof(ProductValidator))]
         public IResult Add(Product product)
         {
+            ValidationTool.Validate(new ProductValidator(), product);
             _productDal.Add(product);
-            return new SuccessResult(message:"asd");
+            return new SuccessResult(message: "Ürün eklendi.");
         }
 
         public IDataResult<List<Product>> GetAll()
