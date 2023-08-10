@@ -8,5 +8,10 @@ namespace Business.Constants
 {
     public static class Messages
     {
+        internal static readonly string ProductAdded;
+
+        public static string ProductCountOfCategoryError { get; internal set; }
+        public static string ProductNameAlreadyExists { get; internal set; }
+        public static string CategoryLimitExceded { get; internal set; }
     }
 }
